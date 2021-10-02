@@ -4,7 +4,7 @@
 using namespace std;
 
 void unnormalize(int array [], int size) {
-    if (array[0] >= size) {
+    if (array[0] >= size - 1) {
         cout << "x's represent out of scope bits" << endl;
     }
     if (array[0] < 0) { 
@@ -131,7 +131,7 @@ int main(){
             output[expBits + i] = binary[i + 1];
         }
     }
-    cout << "output" << endl << "note read the above notes as even if out of range the output is still shown" << endl;
+    cout << endl << "output" << endl << "note read the above notes as even if out of range the output is still shown" << endl;
     for(int i = 0; i < 1 + expBits + sigBits; i++) {
         if ((i == 1) || (i == 1 + expBits)) {
             cout << " ";
