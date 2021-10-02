@@ -61,7 +61,9 @@ int main(){
         dec *= -1;
     }
     overFlow = dec2AN(dec, binary, sigSize);//convert to binary in array zeroth (0) spot in array is n in 2^n for the value of the first placeint Largest2Divs (double dec)
-    
+    if (overFlow) {
+        cout << "*information lost due to size of significant, be aware that the output will not equal the input if converted back" << endl;
+    }
     // for (int i = 0; i < sigSize; i++){  //debug binary
     //     //printf( binary[i] );
     //     cout << binary[i] << " ";
@@ -69,7 +71,9 @@ int main(){
     // cout << endl;
     int shift = pow(2,(expBits - 1)) - 1;
     overFlow = dec2AN(binary[0] + shift, exp, expSize); //pow(2,(expBits - 1)) - 1 shift for exponent. so for 3 bits it would be shift 3
-
+    if (overFlow) {
+        cout << "*note that there is an overflow in the exponent (even before the shift), this indicates that the input is waaaaaaaaaaaaaaay out of range" << endl;
+    }
     // for (int i = 0; i < expSize; i++){  //debug exponent
     //     cout << exp[i] << " ";
     // }
@@ -108,7 +112,7 @@ int main(){
 
     output[0] = sign;
     if ((exp[0] > expBits - 1) || (exp[0] < 0)) {
-        cout << "ERROR EXPONENT OVERFLOW" << endl;
+        cout << "ERROR EXPONENT OVERFLOW" << endl << "the output will not be correct as the input is out of range" << endl;
     }
     else{
         int power = exp[0];
@@ -127,7 +131,7 @@ int main(){
             output[expBits + i] = binary[i + 1];
         }
     }
-
+    cout << "output" << endl << "note read the above notes as even if out of range the output is still shown" << endl;
     for(int i = 0; i < 1 + expBits + sigBits; i++) {
         if ((i == 1) || (i == 1 + expBits)) {
             cout << " ";
