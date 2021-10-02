@@ -27,6 +27,24 @@ bool dec2AN (double dec, int array [], int size){
     return (dec != 0);
 }
 
+bool round (int array [], int size) {
+    int i = size -1;
+    if (array[i] == 1) { 
+        while (array[i] == 1 && i >= 0) {
+            array[i] = 0;
+            i--;
+        }
+        if (i < 0) {
+            return false;
+        }
+        else {
+            array[i] = 1;
+            return true;
+        }
+    }
+    return true;
+}
+
 // int * Dec2A (double dec){
 //     int power = largedtPow2 (dec);
 //     int size = power + 2;
